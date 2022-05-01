@@ -1,0 +1,37 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" >
+            <strong>Message:</strong>{{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        <div class="content">
+            <h3>Sign IN</h3>
+            <form action="/signin" method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" Required>
+                </div>
+                <br>
+                <div>
+                    <label for="">Password</label>
+                    <input type="password" id="pass1" name="pass1" placeholder="Enter your Password" Required>
+                </div>
+                <br>
+
+                <button type="submit">Sign In</button>
+
+            </form>
+        </div>
+    </body>
+</html>
